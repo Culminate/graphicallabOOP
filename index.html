@@ -1,25 +1,141 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title>ООП</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div id="container">
-		<canvas id="canvas" width="500" height="500">
-		    <p>Ваш браузер не поддерживает рисование.</p>
-		</canvas>
-	</div>
+  <head>
+    <title>Vectorius Canvas</title>
+    <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+    <link rel='stylesheet' href='https://bootswatch.com/4/sketchy/bootstrap.min.css'>
 
 
-  <script src='https://bootswatch.com/_vendor/jquery/dist/jquery.min.js'></script>
+    <script src='https://bootswatch.com/_vendor/jquery/dist/jquery.min.js'></script>
+    <script src='https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js'></script>
+    <script src='https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js'></script>
 
-	<script src="scripts/logic/Dot.js"></script>
-	<script src="scripts/logic/Figure.js"></script>
-	<script src="scripts/logic/Polygon.js"></script>
-	<script src="scripts/logic/Star.js"></script>
-	<script src="scripts/logic/Circle.js"></script>
+    <script src="libs/color_picker/jquery.simplecolorpicker.js"></script>
+    <link rel="stylesheet" href="libs/color_picker/jquery.simplecolorpicker.css">
 
-	<script src="main.js"></script>
-</body>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+  <body>
+    <div id='container'>
+        <div id='left_toolbar' class='toolbar'>
+          <div><h2>Vectorius Canvas</h2></div>
+          <div>
+            <h4>Инструменты</h4>
+            <div id='new_element_choose'>
+              <div class="tool_choose-item"><span>Сохранить</span></div>
+              <div class="tool_choose-item"><span>Загрузить</span></div>
+              <div class="tool_choose-item"><span>Редактирование</span></div>
+              <div class="tool_choose-item"><span>Многоугольник</span></div>
+              <div class="tool_choose-item"><span>Звезда</span></div>
+              <div class="tool_choose-item"><span>Круг</span></div>
+              <div class="tool_choose-item"><span>Удалить фигуру</span></div>
+            </div>
+          </div>
+
+        </div>
+        <div id='right_toolbar' class='toolbar'>
+          <div>
+            <h4>Свойства</h4>
+            <div >
+              <div class="figure_attribute">
+                <span>Цвет</span>
+                <div class="figure_attribute-value colorpicker_div">
+                  <select name="colorpicker_color">
+                    <option value="#7bd148">Green</option>
+                    <option value="#5484ed">Bold blue</option>
+                    <option value="#a4bdfc">Blue</option>
+                    <option value="#46d6db">Turquoise</option>
+                    <option value="#7ae7bf">Light green</option>
+                    <option value="#51b749">Bold green</option>
+                    <option value="#fbd75b">Yellow</option>
+                    <option value="#ffb878">Orange</option>
+                    <option value="#ff887c">Red</option>
+                    <option value="#dc2127">Bold red</option>
+                    <option value="#dbadff">Purple</option>
+                    <option value="#e1e1e1">Gray</option>
+                  </select>
+                </div>
+              </div>
+              <div class="figure_attribute">
+                <span>Цвет границ</span>
+                <div class="figure_attribute-value colorpicker_div">
+                  <select name="colorpicker_bordercolor">
+                    <option value="#7bd148">Green</option>
+                    <option value="#5484ed">Bold blue</option>
+                    <option value="#a4bdfc">Blue</option>
+                    <option value="#46d6db">Turquoise</option>
+                    <option value="#7ae7bf">Light green</option>
+                    <option value="#51b749">Bold green</option>
+                    <option value="#fbd75b">Yellow</option>
+                    <option value="#ffb878">Orange</option>
+                    <option value="#ff887c">Red</option>
+                    <option value="#dc2127">Bold red</option>
+                    <option value="#dbadff">Purple</option>
+                    <option value="#e1e1e1">Gray</option>
+                  </select>
+                </div>
+              </div>
+              <div class="figure_attribute">
+                <span>Ширина границ</span>
+                <div class="figure_attribute-value range_div">
+                  <input type="range" value="2" min="0" max="5" step="1">
+                </div>
+              </div>
+              <div class="figure_attribute">
+                <span>Ширина</span>
+                <div class="figure_attribute-value range_div">
+                  <input type="range" value="2" min="5" max="20" step="1">
+                </div>
+              </div>
+              <div class="figure_attribute">
+                <span>Высота</span>
+                <div class="figure_attribute-value range_div">
+                  <input type="range" value="2" min="5" max="20" step="1">
+                </div>
+              </div>
+              <div class="figure_attribute">
+                <span>Угол наклона</span>
+                <div class="figure_attribute-value range_div">
+                  <input type="range" value="0" min="0" max="359" step="1">
+                </div>
+              </div>
+              <div class="figure_attribute">
+                <span>Количество сторон</span>
+                <div class="figure_attribute-value range_div">
+                  <input type="range" value="5" min="3" max="20" step="1">
+                </div>
+              </div>
+              <div class="figure_attribute">
+                <span>Количество концов</span>
+                <div class="figure_attribute-value range_div">
+                  <input type="range" value="5" min="3" max="20" step="1">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="objects_list" class="">
+            <h4>Фигиры</h4>
+            <div class='radiobox-div'>
+								<label class='radiobox'><input type="radio" name="selectedIdEneble"><span class="item">Круг #1</span></label>
+  					</div>
+            <div class='radiobox-div'>
+								<label class='radiobox'><input type="radio" name="selectedIdEneble"><span class="item">Многоугольник: 3 #1</span></label>
+						</div>
+            <div class='radiobox-div'>
+  							<label class='radiobox'><input type="radio" name="selectedIdEneble"><span class="item">Многоугольник: 5 #2</span></label>
+  					</div>
+            </div>
+          </div>
+        <div id='canvas_div'><canvas id='canvas'></canvas></div>
+    </div>
+  </body>
 </html>
+
+<script src="scripts/figures/Dot.js"></script>
+<script src="scripts/figures/Figure.js"></script>
+<script src="scripts/figures/Polygon.js"></script>
+<script src="scripts/figures/Star.js"></script>
+<script src="scripts/figures/Circle.js"></script>
+<script src="scripts/canvas.js"></script>
+<script src="scripts/interface.js"></script>
+
+<script src="main.js"></script>
