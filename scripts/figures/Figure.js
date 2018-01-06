@@ -10,7 +10,7 @@ class Figure extends Dot{
 
     this._width = width;
     this._height = height;
-    this._angle = angle;
+    this._angle = angle+45;
     this._borderColor = borderColor;
     this._borderWidth = borderWidth;
   }
