@@ -33,6 +33,7 @@ class Canvas{
   }
 
   draw(){
+    
     this._clear();
     this.items.forEach(function(figure) {
         figure.draw();
@@ -49,7 +50,9 @@ class Canvas{
   }
 
   _clear(){
-    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
   get ctx(){ return this._ctx; }
